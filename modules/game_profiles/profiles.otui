@@ -1,0 +1,31 @@
+MainWindow
+  id: profileWindow
+  !text: tr('Profiles')
+  size: 230 130
+
+  ComboBox
+    id: profileBox
+    width: 200
+    height: 26
+    anchors.top: parent.top
+    anchors.left: parent.left
+    @onOptionChange: modules.client_options.setOption("profile", self.currentIndex)
+    @onSetup: |
+      self:addOption(tr('Profile %s', '1'))
+      self:addOption(tr('Profile %s', '2'))
+      self:addOption(tr('Profile %s', '3'))
+      self:addOption(tr('Profile %s', '4'))
+      self:addOption(tr('Profile %s', '5'))
+      self:addOption(tr('Profile %s', '6'))
+      self:addOption(tr('Profile %s', '7'))
+      self:addOption(tr('Profile %s', '8'))
+      self:addOption(tr('Profile %s', '9'))
+      self:addOption(tr('Profile %s', '10'))
+
+  Button
+    id: closeButton
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    size: 80 26
+    !text: tr('Close')
+    @onClick: hide()

@@ -1,0 +1,46 @@
+DialogWindow < UIWindow
+  anchors.centerIn: parent
+  text-align: topleft
+  text-offset: 12 12
+  padding: 12
+  background-color: black
+
+DialogWindow
+  size: 560 170
+  visible: false
+  focusable: false
+  @onEscape: g_game.talkChannel(MessageModes.NpcTo, 0, 'bye') self:hide()
+
+  Button
+    size: 22 22
+    anchors.top: parent.top
+    anchors.right: parent.right
+    !text: tr('x')
+    @onClick: g_game.talkChannel(MessageModes.NpcTo, 0, 'bye') self:getParent():hide()
+
+  UICreature
+    id: npcOutfit
+    size: 56 56
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 25
+
+  Label
+    id: messageLabel
+    anchors.top: prev.top
+    anchors.left: prev.right
+    anchors.right: parent.right
+    anchors.bottom: next.top
+    margin: 0 12
+    text-wrap: true
+
+  ScrollablePanel
+    id: optionsPanel
+    height: 22
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    layout:
+      type: grid
+      cell-size: 99 22
+      flow: true

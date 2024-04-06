@@ -1,0 +1,304 @@
+ChoiceListLabel < Label
+  font: verdana-11px-monochrome
+  background-color: alpha
+  text-offset: 2 0
+  focusable: true
+
+  $focus:
+    background-color: #00000055
+    color: #ffffff
+
+ChoiceList < UITextList
+  id: choiceList
+  vertical-scrollbar: choiceScrollBar
+  anchors.fill: parent
+  anchors.top: prev.bottom
+  anchors.bottom: next.top
+  margin-top: 4
+  image-source: ~
+  margin-bottom: 10
+  focusable: false
+  visible: false
+
+ChoiceScrollBar < VerticalScrollBar
+  id: choiceScrollBar
+  anchors.top: choiceList.top
+  anchors.bottom: choiceList.bottom
+  anchors.right: choiceList.right
+  step: 14
+  pixels-scroll: true
+  visible: false
+
+ModalButton < Button
+  text-auto-resize: true
+  margin-top: 2
+  margin-bottom: 2
+  margin-left: 2
+
+  $pressed:
+    text-offset: 0 0
+
+AlternativeChoiceListLabel < ChoiceListLabel
+  font: sans-bold-16px-rounded
+  color: #A0A0A0
+  text-align: center
+  text-offset: 0 -100
+  image-source: choice
+  opacity: 0.7
+
+  $focus:
+    color: green
+    opacity: 1
+
+AlternativeChoiceList < ChoiceList
+  id: choiceList
+  vertical-scrollbar: alternativeChoiceScrollBar
+  anchors.fill: parent
+  anchors.top: prev.bottom
+  anchors.bottom: next.top
+  margin-right: 8
+  margin-left: 8
+  margin-top: 10
+  margin-bottom: 20
+  image-source: ~
+  focusable: true
+  visible: true
+  layout:
+    type: grid
+    cell-size: 248 160
+    flow: true
+    cell-spacing: 2
+
+AlternativeChoiceScrollBar < ChoiceScrollBar
+  id: choiceScrollBar
+  anchors.top: alternativeChoiceList.top
+  anchors.bottom: alternativeChoiceList.bottom
+  anchors.right: alternativeChoiceList.right
+  step: 20
+  pixels-scroll: true
+  visible: true
+
+AlternativeModalButton < ModalButton
+  font: arial-12px-bold
+  background-color: #123456
+  color: #FFFFFF
+  margin-top: 4
+  margin-bottom: 4
+  margin-left: 4
+  margin-right: 4
+
+
+SecondAlternativeChoiceListLabel < ChoiceListLabel
+  font: sans-bold-16px-rounded
+  color: #A0A0A0
+  text-align: center
+  text-offset: 0 -100
+  image-source: choice
+  opacity: 0.7
+
+  $focus:
+    color: green
+    opacity: 1
+
+SecondAlternativeChoiceList < ChoiceList
+  id: choiceList
+  vertical-scrollbar: alternativeChoiceScrollBar
+  anchors.fill: parent
+  anchors.top: prev.bottom
+  anchors.bottom: next.top
+  margin-right: 8
+  margin-left: 8
+  margin-top: 10
+  margin-bottom: 20
+  image-source: ~
+  focusable: true
+  visible: true
+  layout:
+    type: grid
+    cell-size: 248 160
+    flow: true
+    cell-spacing: 2
+
+SecondAlternativeChoiceScrollBar < ChoiceScrollBar
+  id: choiceScrollBar
+  anchors.top: alternativeChoiceList.top
+  anchors.bottom: alternativeChoiceList.bottom
+  anchors.right: alternativeChoiceList.right
+  step: 20
+  pixels-scroll: true
+  visible: true
+
+SecondAlternativeModalButton < ModalButton
+  font: arial-12px-bold
+  background-color: #123456
+  color: #FFFFFF
+  margin-top: 4
+  margin-bottom: 4
+  margin-left: 4
+  margin-right: 4
+
+
+ModalDialog < MainWindow
+  id: modalDialog
+  size: 280 97
+  &minimumWidth: 300
+  &maximumWidth: 600
+  &minimumChoices: 4
+  &maximumChoices: 10
+
+  Label
+    id: messageLabel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    text-align: left
+    text-auto-resize: true
+    text-wrap: true
+
+  ChoiceList
+
+  HorizontalSeparator
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: next.top
+    margin-bottom: 5
+
+  Panel
+    id: buttonsPanel
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    height: 24
+    layout: horizontalBox
+      align-right: true
+
+  ChoiceScrollBar
+
+AlternativeModalDialog < MainWindow
+  id: alternativeModalDialog
+  size: 800 629
+  image-source: back
+  &minimumChoices: 4
+  &maximumChoices: 30
+
+  Label
+    id: messageLabel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    text-align: left
+    text-auto-resize: true
+    text-wrap: true
+    visible: false
+
+  AlternativeChoiceList
+    size: 200 600
+
+  HorizontalSeparator
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: next.top
+    margin-bottom: 5
+    visible: true
+
+  Panel
+    id: buttonsPanel
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    height: 24
+    layout: horizontalBox
+      align-right: true
+
+  AlternativeChoiceScrollBar
+    visible: false
+
+
+
+
+SecondAlternativeModalDialog < MainWindow
+  id: alternativeModalDialog
+  size: 800 629
+  image-source: back
+  &minimumChoices: 4
+  &maximumChoices: 30
+
+  Label
+    id: messageLabel
+    anchors.bottom: parent.bottom
+    anchors.horizontalCenter: parent.horizontalCenter
+    text-align: center
+    text-auto-resize: true
+    text-wrap: true
+    margin-bottom: 80
+    visible: false
+
+  Label
+    id: dungeonImage
+    anchors.top: parent.top
+    anchors.horizontalCenter: parent.horizontalCenter
+    size: 758 411
+    image-source: choice
+    visible: true
+    margin-top: 25
+
+  Label
+    id: dungeonLeft
+    font: arial-12px-bold
+    color: white
+    text-align: center
+    text-offset: 0 -50
+    text: Requeriments
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    size: 254 100
+    border: 1 #E8B90D
+    visible: true
+    margin-bottom: 50
+    margin-left: 3
+
+  Label
+    id: dungeonMiddle
+    font: arial-12px-bold
+    color: white
+    text-align: center
+    text-offset: 0 -50
+    text: Dungeon Time
+    anchors.bottom: parent.bottom
+    anchors.left: prev.right
+    size: 254 100
+    border: 1 #E8B90D
+    visible: true
+    margin-bottom: 50
+    margin-left: 3
+
+  Label
+    id: dungeonRight
+    anchors.bottom: parent.bottom
+    anchors.left: prev.right
+    size: 254 100
+    margin-bottom: 50
+    margin-left: 3
+    layout:
+      type: grid
+      cell-size: 32 32
+      flow: true
+
+  ChoiceList
+
+  HorizontalSeparator
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: next.top
+    margin-bottom: 5
+
+  Panel
+    id: buttonsPanel
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    size: 160 40
+    layout: horizontalBox
+      align-right: true
+
+  ChoiceScrollBar

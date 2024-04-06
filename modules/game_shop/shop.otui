@@ -1,0 +1,290 @@
+ShopCategory < Panel
+  height: 36
+  focusable: true
+  image-source: /images/store/cat
+
+  $focus:
+    image-source: /images/store/catOn
+
+  $hover:
+    image-source: /images/store/catH
+
+  $disabled:
+    image-source: /images/store/cat
+  
+  Label
+    id: name
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-left: 40
+    text-align: left
+    color: white
+    font: verdana-11px-rounded    
+    
+ShopCategoryItem < ShopCategory
+  UIItem
+    id: item
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    margin-top: 2
+    margin-bottom: 2
+    margin-left: 2
+    virtual: true
+    size: 32 32
+    
+ShopCategoryCreature < ShopCategory
+  UICreature
+    id: creature
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    margin-top: 2
+    margin-bottom: 2
+    margin-left: 2
+    size: 32 32
+    
+ShopCategoryImage < ShopCategory
+  Label
+    id: image
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    margin-top: 2
+    margin-bottom: 2
+    margin-left: 2
+    size: 32 32    
+    
+    
+    
+ShopOffer < Panel
+  size: 96 96
+  background: alpha
+  image-source: /images/store/offer
+  
+  $focus:
+    image-source: /images/store/offerOn
+
+  Label
+    id: title
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: parent.top
+    margin-top: 4
+    margin-left: 55
+    text-align: topleft
+    color: white
+    font: verdana-11px-rounded
+
+  Label
+    id: description
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-left: 85
+    color: #6B6B6B
+    margin-bottom: 35
+    margin-right: 20
+    text-align: topleft
+    text-auto-resize: true
+    text-wrap: true
+    color: white
+    border: 1 #6B6B6B
+    font: verdana-9px-bold
+    
+  Button
+    id: buyButton
+    text: Purchase
+    color: yellow
+    height: 15
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.bottom: parent.bottom
+    margin-bottom: 15
+    margin-right: 45
+    margin-left: 45
+    text-align: center
+    
+ShopOfferItem < ShopOffer
+  UIItem
+    id: item
+    anchors.top: parent.top
+    anchors.verticalCenter: parent.verticalCenter
+    anchors.left: parent.left
+    margin-top: 4
+    margin-bottom: 4
+    margin-left: 24
+    virtual: true
+    size: 48 48
+    
+ShopOfferCreature < ShopOffer
+  UICreature
+    id: creature
+    anchors.top: parent.top
+    anchors.verticalCenter: parent.verticalCenter
+    anchors.left: parent.left
+    margin-top: 4
+    margin-bottom: 4
+    margin-left: 24
+    virtual: true
+    size: 48 48
+    
+ShopOfferImage < ShopOffer
+  Label
+    id: image
+    anchors.top: parent.top
+    anchors.verticalCenter: parent.verticalCenter
+    anchors.left: parent.left
+    margin-top: 4
+    margin-bottom: 4
+    margin-left: 24
+    virtual: true
+    size: 48 48
+  
+MainWindow
+  id: shopWindow
+  !text: tr('Store')
+  image-source: /images/store/window
+  size: 800 600
+  @onEscape: modules.game_shop.hide()
+  $mobile:
+    size: 500 360
+
+
+  UILabel
+    image-source: /images/store/banner
+    anchors.top: parent.top
+    anchors.left: parent.left
+    size: 288 600
+
+
+
+  UILabel
+    image-source: /images/store/offers
+    anchors.top: parent.top
+    anchors.left: prev.right
+    size: 488 600
+
+
+  Panel
+    id: infoPanel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    width: 230
+    height: 60
+
+    Label
+      id: points
+      anchors.horizontalCenter: parent.horizontalCenter
+      anchors.top: parent.top
+      margin-top: 10
+      text: -
+      text-auto-resize: true
+    
+    Button
+      id: buy
+      anchors.horizontalCenter: parent.horizontalCenter
+      width: 150
+      anchors.top: prev.bottom
+      margin-top: 10
+      !text: tr("Buy points")
+
+  Panel
+    id: adPanel
+    anchors.top: parent.top
+    anchors.left: infoPanel.right
+    anchors.right: parent.right
+    margin-left: 10
+    height: 0
+    
+    Label
+      id: ad
+      anchors.horizontalCenter: parent.horizontalCenter
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      text-auto-resize: true
+      text-wrap: true
+      text-align: center
+      font: sans-bold-16px
+  
+  UITextList    
+    id: categories
+    vertical-scrollbar: categoriesScrollBar
+    anchors.top: infoPanel.bottom
+    anchors.left: infoPanel.left
+    anchors.right: infoPanel.right
+    anchors.bottom: transactionHistory.top
+    margin-top: 110
+    margin-left: 25
+    margin-bottom: 10
+    padding: 1
+    focusable: false
+
+  VerticalScrollBar
+    id: categoriesScrollBar
+    anchors.top: categories.top
+    anchors.bottom: categories.bottom
+    anchors.right: categories.right
+    step: 50
+    visible: false
+    pixels-scroll: true
+
+  UITextList
+    id: offers
+    vertical-scrollbar: offersScrollBar
+    anchors.top: adPanel.bottom
+    anchors.left: adPanel.left
+    anchors.right: adPanel.right
+    anchors.bottom: transactionHistory.top
+    margin-left: 55
+    margin-top: 10
+    margin-bottom: 10
+    image-source: ~
+    padding: 1
+    focusable: false
+    layout:
+      type: grid
+      flow: true
+      cell-size: 224 128
+
+  VerticalScrollBar
+    id: offersScrollBar
+    anchors.top: offers.top
+    anchors.bottom: offers.bottom
+    anchors.right: offers.right
+    step: 50
+    margin-right: 10
+    margin-top: 20
+    margin-bottom: 10
+    pixels-scroll: true
+
+  Button
+    id: transactionHistory
+    !text: tr('Transaction history')
+    width: 128
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    margin-left: 75
+    margin-bottom: 35
+    @onClick: modules.game_shop.showHistory()
+
+  Button
+    id: transferOpen
+    !text: tr('Transfer Coins')
+    margin-left: 75
+    margin-bottom: 10
+    width: 128
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    @onClick: modules.game_shop.showTransfer()
+
+  Button
+    id: buttonCancel
+    !text: tr('Close')
+    width: 64
+    anchors.right: parent.right
+    margin-right: 35
+    anchors.bottom: parent.bottom
+    @onClick: modules.game_shop.hide()

@@ -1,0 +1,10 @@
+Module
+  name: game_profiles
+  description: profiles
+  author: Ghoulgeta
+  sandboxed: true
+  scripts: [ profiles ]
+  @onLoad: init()
+  @onUnload: terminate()
+  dependencies:
+    - game_interface

@@ -1,0 +1,502 @@
+MainWindow
+  id: attributesMain
+  !text: tr('Character Attributes')
+  size: 530 320
+  //border: 2 #CF9033
+  background-color: #171618
+  opacity: 0.8
+  image-source: window
+  @onEscape: modules.attributes.closing()
+
+  TabBar
+    id: allTabs
+    anchors.top: parent.top
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+
+  Panel
+    id: optionsTabContent
+    anchors.top: allTabs.top
+    anchors.left: allTabs.left
+    anchors.right: allTabs.right
+    anchors.bottom: allTabs.bottom
+    margin-top: 20
+    margin-bottom: 20
+
+    Panel
+      id: firstPanel
+      anchors.top: parent.top
+      anchors.left: parent.left
+      size: 90 110
+      image-source: card
+      background-color: #171618
+      margin-top: -20
+      margin-left: 22
+
+      Label
+        id: value
+        text: 0
+        size: 60 22
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        margin-bottom: 5
+        margin-right: 15
+        border: 2 #CF9033
+        background-color: #171618
+        text-align: center
+
+      Button
+        id: add
+        text: +
+        size: 12 12
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        margin-bottom: 10
+        margin-right: 10
+        font: verdana-11px-antialised
+        @onClick: modules.attributes.addvitality()
+
+      Button
+        id: titleF
+        text: Vitality
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-top: 5
+        font: verdana-11px-antialised
+        image-source: ~
+
+      UILabel
+        id: vitalityIcon
+        image-source: vitality
+        size: 48 48
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-top: 30
+
+        UIButton
+          image-source: info
+          anchors.bottom: parent.bottom
+          anchors.right: parent.right
+          !tooltip: tr('Vitality will increase your character max health for every point you set on it.\nRemember that every vocation has different health received for\neveryvitality point.')
+
+    Panel
+      id: twoPanel
+      anchors.top: parent.top
+      anchors.left: prev.right
+      image-source: cardMana
+      background-color: #171618
+      size: 90 110
+      margin-top: -20
+      margin-left: 25
+
+      Label
+        id: value
+        text: 0
+        size: 60 22
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        margin-bottom: 5
+        margin-right: 15
+        border: 2 #CF9033
+        background-color: #171618
+        text-align: center
+
+      Button
+        id: add
+        text: +
+        size: 12 12
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        margin-bottom: 10
+        margin-right: 10
+        font: verdana-11px-antialised
+        @onClick: modules.attributes.addmana()
+
+      Button
+        id: titleF
+        text: Mana
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-top: 5
+        font: verdana-11px-antialised
+        image-source: ~
+
+      UILabel
+        id: manaIcon
+        image-source: mana
+        size: 48 48
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-top: 30
+
+        UIButton
+          image-source: info
+          anchors.bottom: parent.bottom
+          anchors.right: parent.right
+          !tooltip: tr('Vitality will increase your character max health for every point you set on it.\nRemember that every vocation has different health received for\neveryvitality point.')
+
+    Panel
+      id: threePanel
+      anchors.top: parent.top
+      anchors.left: prev.right
+      image-source: cardDef
+      background-color: #171618
+      size: 90 110
+      margin-top: -20
+      margin-left: 25
+
+      Label
+        id: value
+        text: 0
+        size: 60 22
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        margin-bottom: 5
+        margin-right: 15
+        border: 2 #CF9033
+        background-color: #171618
+        text-align: center
+
+      Button
+        id: add
+        text: +
+        size: 12 12
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        margin-bottom: 10
+        margin-right: 10
+        font: verdana-11px-antialised
+        @onClick: modules.attributes.adddefense()
+
+      Button
+        id: titleF
+        text: Defense
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-top: 5
+        font: verdana-11px-antialised
+        image-source: ~
+
+      UILabel
+        id: defenseIcon
+        image-source: defense
+        size: 48 48
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-top: 30
+
+        UIButton
+          image-source: info
+          anchors.bottom: parent.bottom
+          anchors.right: parent.right
+          !tooltip: tr('Vitality will increase your character max health for every point you set on it.\nRemember that every vocation has different health received for\neveryvitality point.')
+
+    Panel
+      id: fourPanel
+      anchors.top: parent.top
+      anchors.left: prev.right
+      image-source: cardStr
+      background-color: #171618
+      size: 90 110
+      margin-top: -20
+      margin-left: 25
+
+      Label
+        id: value
+        text: 0
+        size: 60 22
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        margin-bottom: 5
+        margin-right: 15
+        border: 2 #CF9033
+        background-color: #171618
+        text-align: center
+
+      Button
+        id: add
+        text: +
+        size: 12 12
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        margin-bottom: 10
+        margin-right: 10
+        font: verdana-11px-antialised
+        @onClick: modules.attributes.addstrength()
+
+      Button
+        id: titleF
+        text: Strength
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-top: 5
+        font: verdana-11px-antialised
+        image-source: ~
+
+      UILabel
+        id: strengthIcon
+        image-source: strength
+        size: 48 48
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-top: 30
+
+        UIButton
+          image-source: info
+          anchors.bottom: parent.bottom
+          anchors.right: parent.right
+          !tooltip: tr('Vitality will increase your character max health for every point you set on it.\nRemember that every vocation has different health received for\neveryvitality point.')
+
+    Panel
+      id: fivePanel
+      anchors.top: firstPanel.bottom
+      anchors.left: parent.left
+      image-source: cardAgi
+      background-color: #171618
+      size: 90 110
+      margin-top: 10
+      margin-left: 22
+
+      Label
+        id: value
+        text: 0
+        size: 60 22
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        margin-bottom: 5
+        margin-right: 15
+        border: 2 #CF9033
+        background-color: #171618
+        text-align: center
+
+      Button
+        id: add
+        text: +
+        size: 12 12
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        margin-bottom: 10
+        margin-right: 10
+        font: verdana-11px-antialised
+        @onClick: modules.attributes.addagility()
+
+      Button
+        id: titleF
+        text: Agility
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-top: 5
+        font: verdana-11px-antialised
+        image-source: ~
+
+      UILabel
+        id: agilityIcon
+        image-source: agility
+        size: 48 48
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-top: 30
+
+        UIButton
+          image-source: info
+          anchors.bottom: parent.bottom
+          anchors.right: parent.right
+          !tooltip: tr('Vitality will increase your character max health for every point you set on it.\nRemember that every vocation has different health received for\neveryvitality point.')
+
+    Panel
+      id: sixPanel
+      anchors.top: firstPanel.bottom
+      anchors.left: prev.right
+      image-source: cardAS
+      background-color: #171618
+      size: 90 110
+      margin-top: 10
+      margin-left: 25
+
+      Label
+        id: value
+        text: 0
+        size: 60 22
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        margin-bottom: 5
+        margin-right: 15
+        border: 2 #CF9033
+        background-color: #171618
+        text-align: center
+
+      Button
+        id: titleF
+        text: Attack Speed
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-top: 5
+        font: verdana-11px-antialised
+        image-source: ~
+
+      Button
+        id: add
+        text: +
+        size: 12 12
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        margin-bottom: 10
+        margin-right: 10
+        font: verdana-11px-antialised
+        @onClick: modules.attributes.addattackspeed()
+
+      UILabel
+        id: attackspeedIcon
+        image-source: attackspeed
+        size: 48 48
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-top: 30
+
+        UIButton
+          image-source: info
+          anchors.bottom: parent.bottom
+          anchors.right: parent.right
+          !tooltip: tr('Vitality will increase your character max health for every point you set on it.\nRemember that every vocation has different health received for\neveryvitality point.')
+
+    Panel
+      id: sevenPanel
+      anchors.top: firstPanel.bottom
+      anchors.left: prev.right
+      image-source: cardReflect
+      background-color: #171618
+      size: 90 110
+      margin-top: 10
+      margin-left: 25
+
+      Label
+        id: value
+        text: 0
+        size: 60 22
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        margin-bottom: 5
+        margin-right: 15
+        border: 2 #CF9033
+        background-color: #171618
+        text-align: center
+
+      Button
+        id: titleF
+        text: Reflect
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-top: 5
+        font: verdana-11px-antialised
+        image-source: ~
+
+      Button
+        id: add
+        text: +
+        size: 12 12
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        margin-bottom: 10
+        margin-right: 10
+        font: verdana-11px-antialised
+        @onClick: modules.attributes.addreflect()
+
+      UILabel
+        id: reflectIcon
+        image-source: reflect
+        size: 48 48
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-top: 30
+
+        UIButton
+          image-source: info
+          anchors.bottom: parent.bottom
+          anchors.right: parent.right
+          !tooltip: tr('Vitality will increase your character max health for every point you set on it.\nRemember that every vocation has different health received for\neveryvitality point.')
+
+    Panel
+      id: eightPanel
+      anchors.top: firstPanel.bottom
+      anchors.left: prev.right
+      image-source: cardCrit
+      background-color: #171618
+      size: 90 110
+      margin-top: 10
+      margin-left: 25
+
+      Label
+        id: value
+        text: 0
+        size: 60 22
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        margin-bottom: 5
+        margin-right: 15
+        border: 2 #CF9033
+        background-color: #171618
+        text-align: center
+
+      Button
+        id: titleF
+        text: Critical
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-top: 5
+        font: verdana-11px-antialised
+        image-source: ~
+
+      Button
+        id: add
+        text: +
+        size: 12 12
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        margin-bottom: 10
+        margin-right: 10
+        font: verdana-11px-antialised
+        @onClick: modules.attributes.addcritical()
+
+      UILabel
+        id: criticalIcon
+        image-source: critical
+        size: 48 48
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-top: 30
+
+        UIButton
+          image-source: info
+          anchors.bottom: parent.bottom
+          anchors.right: parent.right
+          !tooltip: tr('Vitality will increase your character max health for every point you set on it.\nRemember that every vocation has different health received for\neveryvitality point.')
+
+  Panel
+    id: points
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    background-color: #171618
+    size: 60 25
+    border: 1 white
+    margin-left: 22
+
+  UIButton
+    id: closeButton
+    !text: tr('Close')
+    width: 85
+    height: 40
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.bottom: parent.bottom
+    border: 2 #CF9033
+    background-color: #171618
+    image-source: ~
+    @onClick: modules.attributes.closing()
+
+    $hover:
+      border: 2 #CF9033
+      background-color: #617B82
+
+    $hover!:
+      border: 2 #CF9033
+      background-color: #171618

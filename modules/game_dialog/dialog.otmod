@@ -1,0 +1,10 @@
+Module
+  name: game_dialog
+  description: Npc Dialog
+  author: Gengo
+  sandboxed: true
+  scripts: [ dialog ]
+  autoload: true
+  autoload-priority: 1001
+  @onLoad: init()
+  @onUnload: terminate()

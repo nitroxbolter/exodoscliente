@@ -1,0 +1,9 @@
+Module
+  name: game_healthinfo
+  description: Mostra a vida, mana e pontos de poder na Action-Bar
+  author: Ghoulgeta
+  website:
+  sandboxed: true
+  scripts: [ healthinfo ]
+  @onLoad: init()
+  @onUnload: terminate()
