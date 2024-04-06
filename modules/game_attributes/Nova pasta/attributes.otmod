@@ -1,0 +1,14 @@
+Module
+  name: attributes
+  description: attributes
+  author: miezaf
+  website: -
+  version: 1
+
+  autoload: true
+  autoload-priority: 1000
+  sandboxed: true
+  dependencies: [ game_interface ]
+  scripts: [ attributes ]
+  @onLoad: init()
+  @onUnload: terminate()

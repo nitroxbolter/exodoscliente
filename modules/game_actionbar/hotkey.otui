@@ -1,0 +1,53 @@
+MainWindow
+  id: assignHotkeyWindow
+  size: 440 190
+
+  FlatLabel
+    id: display
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 33
+    text-align: center
+    font: verdana-11px-rounded
+
+  Label
+    id: desc
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 10
+    multi-line: true
+    height: 40
+    text-wrap: true
+    !text: tr('Click "Ok" to assign the hotkey. Click "Clear" to remove the hotkey from:')
+
+  HorizontalSeparator
+    anchors.top: prev.bottom
+    margin-top: 10
+    anchors.left: parent.left
+    anchors.right: parent.right
+
+  Button
+    id: buttonClose
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    width: 60
+    !text: tr('Close')
+    @onClick: self:getParent():destroy()
+
+  Button
+    id: buttonClear
+    anchors.right: prev.left
+    margin-right: 5
+    anchors.bottom: parent.bottom
+    width: 60
+    !text: tr('Clear')
+
+  Button
+    id: buttonOk
+    anchors.right: prev.left
+    margin-right: 5
+    anchors.bottom: parent.bottom
+    width: 45
+    !text: tr('Ok')
